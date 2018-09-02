@@ -32,5 +32,18 @@ QUnit.module('Тестируем функцию inverse', function () {
 		assert.deepEqual(inverse([ 1, 2, 3, 4, 5 ], -2), [ 3, 2, 1, 4, 5 ]);
 		assert.deepEqual(inverse([ 1, 2, 3, 4, 5 ], -5), [ 1, 2, 3, 4, 5 ]);
 		assert.deepEqual(inverse([ 1, 2, 3, 4, 5 ], -15), [ 1, 2, 3, 4, 5 ]);
+	});	
+
+	QUnit.test('Функция работает с маленькими массивами', function (assert) {
+		assert.deepEqual(inverse([], 2), []);		
+		assert.deepEqual(inverse([ 1, 2 ]), [ 2, 1 ]);
+		assert.deepEqual(inverse([ 1, 5 ], 1), [ 1, 5 ]);
+		assert.deepEqual(inverse([ 1, 2, 3 ], 1), [ 1, 3, 2 ]);
+		assert.deepEqual(inverse([ 'cat', 'mouse', 'dog' ], -1), [ 'mouse', 'cat', 'dog' ]);
+	}); 
+	
+	QUnit.test('Проверка второго параметра функции', function (assert) {
+		assert.deepEqual(inverse([ 1, 2, 3 ], null), [ 3, 2, 1 ]);		
+		assert.deepEqual(inverse([ 4, 5, 6, 7, 8 ], undefined), [ 8, 7, 6, 5, 4 ]);
 	});
 });
